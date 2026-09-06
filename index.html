@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio de Luiz Guilherme, desenvolvedor backend e full-stack.">
+    <title>Luiz Guilherme — Portfólio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --ink: #111014; --paper: #f3f0e9; --muted: #aaa5b0; --line: rgba(243,240,233,.16); --violet: #a891ff; --lime: #d5f36b; --pink: #ff8da1; }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { margin: 0; background: var(--ink); color: var(--paper); font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
+        a { color: inherit; text-decoration: none; }
+        .wrap { width: min(1180px, calc(100% - 48px)); margin: auto; }
+        .mono { font: 500 11px 'DM Mono', monospace; letter-spacing: .08em; text-transform: uppercase; }
+        header { position: fixed; z-index: 4; top: 0; width: 100%; border-bottom: 1px solid var(--line); background: rgba(17,16,20,.8); backdrop-filter: blur(14px); }
+        nav { height: 78px; display: flex; align-items: center; justify-content: space-between; }
+        .brand { display: flex; align-items: center; gap: 12px; font: 800 22px Syne, sans-serif; letter-spacing: -.06em; }
+        .brand-mark { display: grid; place-items: center; width: 30px; height: 30px; border: 1px solid var(--violet); border-radius: 50%; color: var(--violet); font: 600 16px Syne; }
+        nav ul { display: flex; gap: 34px; padding: 0; margin: 0; list-style: none; color: var(--muted); font-size: 13px; }
+        nav li a:hover { color: var(--paper); }
+        .nav-cta { padding: 12px 17px; border: 1px solid var(--line); border-radius: 2px; font-size: 12px; }
+        .nav-cta:hover { border-color: var(--lime); color: var(--lime); }
+        .hero { min-height: 760px; padding: 190px 0 90px; display: flex; align-items: center; position: relative; overflow: hidden; }
+        .hero:before { content: ''; position: absolute; width: 560px; height: 560px; right: -190px; top: 100px; border-radius: 50%; background: var(--violet); opacity: .12; filter: blur(110px); }
+        .hero-grid { display: grid; grid-template-columns: 1fr 330px; gap: 80px; align-items: end; }
+        .eyebrow { display: flex; align-items: center; gap: 10px; color: var(--lime); margin-bottom: 25px; }
+        .dot { width: 7px; height: 7px; display: inline-block; border-radius: 50%; background: var(--lime); box-shadow: 0 0 15px var(--lime); }
+        h1 { max-width: 810px; margin: 0; font: 800 clamp(60px, 9vw, 130px)/.88 Syne, sans-serif; letter-spacing: -.09em; }
+        h1 em { color: var(--violet); font-style: normal; }
+        .hero-side { border-left: 1px solid var(--line); padding-left: 28px; margin-bottom: 10px; color: var(--muted); font-size: 15px; line-height: 1.7; }
+        .hero-role { display: block; margin: 24px 0 12px; color: var(--violet); font: 600 18px Syne; letter-spacing: -.03em; }
+        .hero-description { max-width: 400px; margin: 0; }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+        .hero-action { display: inline-block; padding: 14px 17px; border: 1px solid var(--lime); color: var(--lime); font-size: 12px; }
+        .hero-action.primary { background: var(--lime); color: var(--ink); }
+        .hero-action:hover { background: var(--violet); border-color: var(--violet); color: var(--ink); }
+        .scroll-note { display: block; margin-top: 45px; color: var(--paper); }
+        .scroll-note span { color: var(--violet); font-size: 19px; margin-left: 10px; }
+        .ticker { border-block: 1px solid var(--line); padding: 17px 0; overflow: hidden; color: var(--muted); white-space: nowrap; }
+        .ticker-inner { display: flex; gap: 30px; width: max-content; animation: move 24s linear infinite; }
+        .ticker b { color: var(--lime); font-weight: 400; }
+        @keyframes move { to { transform: translateX(-50%); } }
+        section { padding: 125px 0; }
+        .section-head { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--line); padding-bottom: 18px; margin-bottom: 52px; }
+        .section-head h2 { margin: 0; font: 700 clamp(32px, 5vw, 60px)/1 Syne; letter-spacing: -.07em; }
+        .section-number { color: var(--violet); }
+        .intro { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: start; }
+        .intro h3 { max-width: 470px; margin: 0; font: 600 33px/1.1 Syne; letter-spacing: -.05em; }
+        .intro-copy { color: var(--muted); font-size: 16px; line-height: 1.8; }
+        .intro-copy p { margin: 0 0 20px; }
+        .skills { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 30px; }
+        .skill { padding: 9px 11px; border: 1px solid var(--line); color: var(--paper); font: 11px 'DM Mono'; }
+        .projects { background: #17151b; }
+        .project { display: grid; grid-template-columns: 1.32fr 1fr; gap: 68px; align-items: center; margin-bottom: 130px; }
+        .project:last-child { margin-bottom: 0; }
+        .project.reverse { grid-template-columns: 1fr 1.32fr; }
+        .project.reverse .project-visual { order: 2; }
+        .project-visual { aspect-ratio: 1.45; overflow: hidden; border: 1px solid var(--line); position: relative; background: #25222b; }
+        .project-visual img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .6s ease; }
+        .project:hover .project-visual img { transform: scale(1.04); }
+        .visual-label { position: absolute; left: 20px; bottom: 18px; padding: 9px 11px; color: var(--ink); background: var(--lime); font: 500 10px 'DM Mono'; text-transform: uppercase; }
+        .project-type { margin-bottom: 14px; color: var(--pink); }
+        .project h3 { margin: 0 0 17px; font: 700 45px/1 Syne; letter-spacing: -.06em; }
+        .project p { color: var(--muted); line-height: 1.7; font-size: 15px; }
+        .project-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; border-top: 1px solid var(--line); margin-top: 28px; padding-top: 17px; }
+        .fact small { display: block; margin-bottom: 7px; color: var(--muted); font: 10px 'DM Mono'; text-transform: uppercase; }
+        .fact span { font-size: 13px; }
+        .project-link { display: inline-block; margin-top: 30px; border-bottom: 1px solid var(--violet); padding-bottom: 6px; color: var(--violet); font-size: 13px; }
+        .dashboard { padding: 30px; background: #0e151b; color: #dce7e7; font-family: 'DM Mono'; }
+        .dash-top { display: flex; justify-content: space-between; border-bottom: 1px solid #27333a; padding-bottom: 22px; font-size: 10px; }
+        .dash-logo { color: var(--lime); font-size: 14px; }
+        .dash-body { display: grid; grid-template-columns: 82px 1fr; gap: 24px; height: calc(100% - 40px); padding-top: 26px; }
+        .dash-nav div { width: 42px; height: 8px; margin-bottom: 18px; background: #27333a; }.dash-nav div:first-child { background: var(--lime); }
+        .dash-main h4 { margin: 0 0 22px; font: 20px Syne; }.metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; }.metric { padding: 13px 10px; background: #172128; font-size: 10px; }.metric b { display: block; margin-top: 9px; font: 20px Syne; color: var(--lime); }.chart { height: 95px; margin-top: 12px; border-bottom: 1px solid #35474c; background: linear-gradient(165deg, transparent 48%, #8fc76b 49%, transparent 51%), linear-gradient(18deg, transparent 55%, #8fc76b 56%, transparent 58%); opacity: .8; }
+        .gacha-art { background: #261c36; height: 100%; padding: 30px; position: relative; overflow: hidden; }.gacha-art:before, .gacha-art:after { content: ''; position: absolute; border-radius: 50%; border: 1px solid rgba(255,141,161,.5); }.gacha-art:before { width: 290px; height: 290px; left: 14%; top: -100px; }.gacha-art:after { width: 190px; height: 190px; right: 8%; bottom: -75px; border-color: var(--violet); }.gacha-word { position: absolute; bottom: 22px; left: 30px; font: 800 46px Syne; letter-spacing: -.08em; color: var(--pink); }.coming { position: absolute; top: 30px; right: 30px; color: var(--lime); }
+        .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }.process { min-height: 220px; padding: 26px; background: var(--ink); }.process strong { display: block; margin-bottom: 54px; color: var(--violet); font: 20px 'DM Mono'; }.process h3 { margin: 0 0 10px; font: 600 21px Syne; }.process p { color: var(--muted); font-size: 14px; line-height: 1.6; }
+        .services-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }.service { min-height: 180px; padding: 22px; background: var(--ink); }.service strong { display: block; margin-bottom: 50px; color: var(--lime); font: 18px 'DM Mono'; }.service h3 { margin: 0; font: 600 18px Syne; }.contact { padding-bottom: 80px; }.contact-box { display: flex; justify-content: space-between; align-items: end; gap: 30px; }.contact h2 { max-width: 780px; margin: 0; font: 700 clamp(45px, 7vw, 92px)/.93 Syne; letter-spacing: -.09em; }.contact h2 em { color: var(--violet); font-style: normal; }.contact-link { flex: 0 0 auto; padding: 18px 20px; background: var(--lime); color: var(--ink); font-weight: 600; }.contact-link:hover { background: var(--violet); }.contact-links { display: flex; gap: 22px; margin-top: 32px; color: var(--muted); }.contact-links a { border-bottom: 1px solid var(--line); padding-bottom: 7px; }.contact-links a:hover { color: var(--lime); border-color: var(--lime); }
+        footer { border-top: 1px solid var(--line); padding: 22px 0; color: var(--muted); display: flex; justify-content: space-between; }.footer-links { display: flex; gap: 22px; }.footer-links a:hover { color: var(--paper); }
+        @media (max-width: 760px) { .wrap { width: min(100% - 32px, 580px); } nav { height: 66px; } nav ul { display: none; } .nav-cta { padding: 9px 11px; } .hero { min-height: 650px; padding: 140px 0 70px; }.hero-grid, .intro, .project, .project.reverse { grid-template-columns: 1fr; gap: 35px; }.hero-side { max-width: 320px; }.section-head { margin-bottom: 34px; } section { padding: 80px 0; }.project { margin-bottom: 85px; }.project.reverse .project-visual { order: initial; }.project h3 { font-size: 38px; }.project-visual { aspect-ratio: 1.18; }.process-grid, .services-grid { grid-template-columns: 1fr; }.process { min-height: 160px; }.process strong, .service strong { margin-bottom: 25px; }.service { min-height: 125px; }.contact-box { display: block; }.contact-link { display: inline-block; margin-top: 32px; }.contact-links { flex-wrap: wrap; } footer { display: block; line-height: 2; }.footer-links { gap: 14px; } }
+    </style>
+</head>
+<body>
+    <header><div class="wrap"><nav><a href="#top" class="brand"><span class="brand-mark">L</span> luiz.guilherme</a><ul><li><a href="#sobre">Tecnologias</a></li><li><a href="#projetos">Projetos</a></li><li><a href="#servicos">Serviços</a></li></ul><a class="nav-cta mono" href="mailto:luiz.guilherme.dev@gmail.com">Vamos conversar ↗</a></nav></div></header>
+    <main id="top">
+        <section class="hero"><div class="wrap hero-grid"><div><div class="eyebrow mono"><span class="dot"></span> disponível para projetos</div><h1>Luiz<br><em>Guilherme.</em></h1><span class="hero-role">Desenvolvedor Web</span><p class="hero-description">Desenvolvo sites e aplicações web modernas e responsivas.</p><div class="hero-actions"><a class="hero-action primary" href="#projetos">Ver projetos ↓</a><a class="hero-action" href="#contato">Entrar em contato ↗</a></div></div><div class="hero-side">Desenvolvedor que transforma problemas reais em sistemas confiáveis, APIs claras e produtos digitais com personalidade.<span class="scroll-note mono">explore o trabalho <span>↓</span></span></div></div></section>
+        <div class="ticker"><div class="ticker-inner mono"><span>backend</span><b>✳</b><span>full-stack</span><b>✳</b><span>sistemas com intenção</span><b>✳</b><span>backend</span><b>✳</b><span>full-stack</span><b>✳</b><span>sistemas com intenção</span><b>✳</b></div></div>
+        <section id="sobre"><div class="wrap"><div class="section-head"><h2>tecnologias</h2><span class="section-number mono">01 / 05</span></div><div class="intro"><h3>Ferramentas para transformar lógica em produto.</h3><div class="intro-copy"><p>Meu foco está em backend e sistemas full-stack: dados organizados, regras de negócio claras e aplicações que continuam funcionando quando crescem.</p><p>Também desenvolvo a camada web necessária para entregar experiências completas, do servidor à interface.</p><div class="skills"><span class="skill">JavaScript</span><span class="skill">Node.js</span><span class="skill">Express</span><span class="skill">HTML</span><span class="skill">CSS</span><span class="skill">SQL</span><span class="skill">Python</span><span class="skill">Git</span></div></div></div></div></section>
+        <section id="projetos" class="projects"><div class="wrap"><div class="section-head"><h2>projetos selecionados</h2><span class="section-number mono">02 / 04</span></div>
+            <article class="project"><div class="project-visual"><div class="dashboard"><div class="dash-top"><span class="dash-logo">SENTINELA</span><span>SECURITY / 2024</span></div><div class="dash-body"><div class="dash-nav"><div></div><div></div><div></div><div></div></div><div class="dash-main"><h4>Visão geral</h4><div class="metrics"><div class="metric">alertas<b>08</b></div><div class="metric">resolvidos<b>94%</b></div><div class="metric">status<b>ativo</b></div></div><div class="chart"></div></div></div></div><span class="visual-label">backend / segurança</span></div><div><div class="project-type mono">01 — Projeto Sentinela</div><h3>Segurança que se enxerga.</h3><p>Como transformar dados de segurança em uma visão clara para quem precisa tomar decisões rápidas? O Sentinela organiza regras, alertas e status para apoiar decisões mais confiáveis.</p><div class="project-facts"><div class="fact"><small>tecnologias</small><span>Node.js · SQL</span></div><div class="fact"><small>papel</small><span>Backend</span></div></div><a class="project-link" href="https://github.com/viole777/Projeto-Sentinela" target="_blank" rel="noreferrer">ver no GitHub ↗</a></div></article>
+            <article class="project reverse"><div class="project-visual"><div class="gacha-art"><img src="https://raw.githubusercontent.com/viole777/jogo-gacha/master/assets/gifs/aizen_victory.gif" alt="Animação de vitória do jogo Gacha"><span class="coming mono">jogar agora ↗</span><span class="gacha-word">GACHA<br>GAME</span></div><span class="visual-label">full-stack / pessoal</span></div><div><div class="project-type mono">02 — Jogo Gacha</div><h3>Um universo feito de sistemas.</h3><p>Um jogo de gacha baseado em universos de anime, com coleção, evolução, batalhas, PvP, ranking global e persistência de progresso dos jogadores.</p><div class="project-facts"><div class="fact"><small>tecnologias</small><span>Python · JavaScript</span></div><div class="fact"><small>arquitetura</small><span>SQLite · Full-stack</span></div></div><a class="project-link" href="https://github.com/viole777/jogo-gacha" target="_blank" rel="noreferrer">ver no GitHub ↗</a></div></article>
+            <article class="project"><div class="project-visual"><img src="https://raw.githubusercontent.com/viole777/ViolePoems/main/imagens/photo-1519682337058-a94d519337bc.avif" alt="Mesa com caderno, caneta e café do projeto ViolePoems"><span class="visual-label">sistemas web / TCC</span></div><div><div class="project-type mono">03 — ViolePoems</div><h3>Um lugar para as palavras respirarem.</h3><p>Uma plataforma para escrever e compartilhar poemas, com publicação dinâmica, validação de dados, formulários e requisições assíncronas.</p><div class="project-facts"><div class="fact"><small>tecnologias</small><span>JavaScript · Fetch API</span></div><div class="fact"><small>resultado</small><span>Projeto de conclusão</span></div></div><a class="project-link" href="https://github.com/viole777/ViolePoems" target="_blank" rel="noreferrer">ver no GitHub ↗</a></div></article>
+        </div></section>
+        <section id="servicos"><div class="wrap"><div class="section-head"><h2>serviços</h2><span class="section-number mono">03 / 05</span></div><div class="services-grid"><div class="service"><strong>01</strong><h3>Landing Pages</h3></div><div class="service"><strong>02</strong><h3>Sites institucionais</h3></div><div class="service"><strong>03</strong><h3>Aplicações Web</h3></div><div class="service"><strong>04</strong><h3>APIs / Backend</h3></div><div class="service"><strong>05</strong><h3>Correção e manutenção</h3></div></div></div></section>
+        <section id="processo"><div class="wrap"><div class="section-head"><h2>como eu trabalho</h2><span class="section-number mono">04 / 05</span></div><div class="process-grid"><div class="process"><strong>01</strong><h3>Entender</h3><p>Contexto, pessoas e o problema por trás do pedido.</p></div><div class="process"><strong>02</strong><h3>Construir</h3><p>Uma solução clara, testável e pensada nos detalhes.</p></div><div class="process"><strong>03</strong><h3>Entregar</h3><p>Resultado que funciona e abre espaço para a próxima ideia.</p></div></div></div></section>
+        <section class="contact" id="contato"><div class="wrap"><div class="section-head"><h2>contato</h2><span class="section-number mono">05 / 05</span></div><div class="contact-box"><h2>vamos fazer algo<br><em>que importe.</em></h2><a class="contact-link" href="mailto:luiz.guilherme.dev@gmail.com">me chama ↗</a></div><div class="contact-links mono"><a href="https://github.com/viole777" target="_blank" rel="noreferrer">GitHub ↗</a><a href="mailto:luiz.guilherme.dev@gmail.com">luiz.guilherme.dev@gmail.com ↗</a></div></div></section>
+    </main>
+    <footer><div class="wrap"><span class="mono">© 2024 Luiz Guilherme</span><div class="footer-links mono"><a href="https://github.com/viole777" target="_blank" rel="noreferrer">GitHub</a><a href="mailto:luiz.guilherme.dev@gmail.com">E-mail</a><a href="#top">voltar ao topo ↑</a></div></div></footer>
+</body>
+</html>
